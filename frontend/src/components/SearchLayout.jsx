@@ -9,6 +9,9 @@ export default function SearchLayout({ token }) {
     const [activeToggles, setToggles] = useState({ web: true, wiki: true, ddg: true });
     const [uploadCount, setUploadCount] = useState(0);
 
+    // Get API base URL from env, default to localhost for dev
+    const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+
     const handleSearch = async (e) => {
         e.preventDefault();
         if (!query.trim()) return;
@@ -24,7 +27,7 @@ export default function SearchLayout({ token }) {
                 pkb: isPKB
             });
 
-            const res = await fetch(`http://localhost:8080/api/search?${params.toString()}`, {
+            const res = await fetch(`${API_BASE}/api/search?${params.toString()}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -50,7 +53,7 @@ export default function SearchLayout({ token }) {
         formData.append('file', file);
 
         try {
-            const res = await fetch(`http://localhost:8080/api/upload`, {
+            const res = await fetch(`${API_BASE}/api/upload`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
