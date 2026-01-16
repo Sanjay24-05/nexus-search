@@ -1,0 +1,47 @@
+# Environment files
+.env
+*.env
+!.env.example
+
+# Go
+backend-go/go.sum
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.env.local
+
+# Python
+python-embedding-service/__pycache__/
+python-embedding-service/*.pyc
+python-embedding-service/venv/
+python-embedding-service/.env
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Database
+*.db
+*.sqlite
+chroma_db/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+EOF
