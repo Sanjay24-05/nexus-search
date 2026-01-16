@@ -1,0 +1,7 @@
+pymongo
+sentence-transformers
+flask
+requests
+python-docx
+pypdf
+python-dotenv

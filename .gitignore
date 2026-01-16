@@ -1,0 +1,37 @@
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Node (Frontend)
+node_modules/
+dist/
+build/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python (Worker)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+.env
+
+# Go (Gateway)
+/gateway/bin/
+/gateway/main
+*.exe
+*.test
+*.out
+/gateway/.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+.env
