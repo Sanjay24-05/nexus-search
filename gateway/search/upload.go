@@ -7,6 +7,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -71,11 +72,11 @@ func UploadProxyHandler(client *mongo.Client) http.HandlerFunc {
 		writer.Close()
 
 		// 4. Send to Worker
-		workerURL := os.Getenv("WORKER_URL")
-		if workerURL == "" {
-			workerURL = "http://127.0.0.1:5000"
+		baseWorkerURL := strings.TrimRight(os.Getenv("WORKER_URL"), "/")
+		if baseWorkerURL == "" {
+			baseWorkerURL = "http://127.0.0.1:5000"
 		}
-		workerURL += "/process"
+		workerURL := baseWorkerURL + "/process"
 		req, err := http.NewRequest("POST", workerURL, body)
 		if err != nil {
 			http.Error(w, "Worker unreachable: "+err.Error(), http.StatusBadGateway)

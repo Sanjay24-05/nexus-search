@@ -11,6 +11,11 @@ from embeddings import generate_embedding
 from storage import save_document, check_quota
 
 app = Flask(__name__)
+
+@app.route('/health')
+def health():
+    return jsonify({'status': 'ok'}), 200
+
 # Max content length setup if needed, but we do manual check
 # app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 @app.route('/embed', methods=['POST'])
