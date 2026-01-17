@@ -70,4 +70,3 @@ Since the backend is hosted on Render's Free Tier:
 
 ---
 
-*Built with ❤️ by Antigravity AI*
