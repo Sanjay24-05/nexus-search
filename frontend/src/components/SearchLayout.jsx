@@ -9,8 +9,9 @@ export default function SearchLayout({ token }) {
     const [activeToggles, setToggles] = useState({ web: true, wiki: true, ddg: true });
     const [uploadCount, setUploadCount] = useState(0);
 
-    // Get API base URL from env, default to localhost for dev
-    const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    // Smart Fallback
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const API_BASE = import.meta.env.VITE_API_URL || (isLocal ? 'http://localhost:8080' : 'https://nexus-search-1.onrender.com');
 
     const handleSearch = async (e) => {
         e.preventDefault();

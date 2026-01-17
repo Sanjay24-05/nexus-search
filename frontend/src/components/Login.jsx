@@ -10,9 +10,13 @@ export default function Login({ onLogin }) {
         e.preventDefault();
         setError('');
 
-        const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
-        console.log("Current API_BASE:", API_BASE); // Debugging log
-        console.log("Env VITE_API_URL:", import.meta.env.VITE_API_URL); // Debugging log
+        // Smart Fallback: If Env Var is missing...
+        // 1. If running on localhost, use localhost:8080
+        // 2. If running on Vercel/Prod, use the Render URL hardcoded as safety net
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const API_BASE = import.meta.env.VITE_API_URL || (isLocal ? 'http://localhost:8080' : 'https://nexus-search-1.onrender.com');
+
+        console.log("Current API_BASE:", API_BASE);
         const endpoint = isRegister ? `${API_BASE}/api/register` : `${API_BASE}/api/login`;
 
         try {
