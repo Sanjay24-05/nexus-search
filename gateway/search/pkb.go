@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -15,7 +16,11 @@ import (
 
 // Helper to get embedding from Python Worker
 func getEmbedding(query string) ([]float32, error) {
-	workerURL := "http://127.0.0.1:5000/embed"
+	workerURL := os.Getenv("WORKER_URL")
+	if workerURL == "" {
+		workerURL = "http://127.0.0.1:5000"
+	}
+	workerURL += "/embed"
 	payload := map[string]string{"text": query}
 	body, _ := json.Marshal(payload)
 
