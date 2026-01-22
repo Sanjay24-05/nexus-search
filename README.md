@@ -1,6 +1,6 @@
 # NexusSearch 🚀
 
-NexusSearch is a high-performance **Hybrid Search Engine** that seamlessly merges live Web Search results with a private **Personal Knowledge Base (PKB)**. It allows users to query the internet and their own uploaded documents (PDF, DOCX, TXT) in a single, unified, split-pane interface.
+NexusSearch is a high-performance **Hybrid Search Engine** that seamlessly merges live Web Search results with a private **Personal Knowledge Base (PKB)**. It allows users to query the internet and their own uploaded documents (PDF, DOCX, TXT) in a single, unified, split-pane interface. (project development currently paused)
 
 ## 🌟 Key Features
 
